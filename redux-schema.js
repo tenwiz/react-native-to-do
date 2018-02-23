@@ -1,9 +1,8 @@
 const store = {
   users: {
     [uid]: {
-      info: {
-        name: '',
-      }
+      name: '',
+      todoIds: [],
     }
   },
   todos: {
@@ -13,11 +12,6 @@ const store = {
       color: '',
       timestamp: 0,
       uid: '',
-    }
-  },
-  usersTodos: {
-    [uid]: {
-      todoIds: [],
     }
   },
 }
