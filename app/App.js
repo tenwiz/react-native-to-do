@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {AppContainer} from "./containers/AppContainer"
+import {AppContainer} from "./containers/App/AppContainer"
 import {Provider} from "react-redux"
 import {applyMiddleware, createStore} from "redux";
 import rootReducer from './redux'
