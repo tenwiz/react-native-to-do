@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {View, Text, Image, StyleSheet} from 'react-native'
-import {Button} from "../common/Button";
+import {CustomButton} from "../common/CustomButton";
 import {appLogo} from "../../images/assets";
 import {InputField} from "../common/InputField";
 import { reduxForm, Field } from 'redux-form'
@@ -30,7 +30,7 @@ class LoginMain extends Component {
           placeholder={'Name'}
         />
         <View style={{height: 16}}/>
-        <Button btnText={'Login'} onPress={handleSubmit}/>
+        <CustomButton btnText={'Login'} onPress={handleSubmit}/>
       </View>
     )
   }

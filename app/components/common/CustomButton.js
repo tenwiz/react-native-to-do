@@ -5,19 +5,20 @@ import {BUTTON_COLOR} from "../../resource/color";
 /**
  * Design: ReplaceMe!
  */
-export class Button extends Component {
+export class CustomButton extends Component {
   static defaultProps = {
     btnText: 'Continue',
     textColor: 'white',
-    backgroundColor: BUTTON_COLOR
+    backgroundColor: BUTTON_COLOR,
+    borderColor: BUTTON_COLOR,
   }
 
   render() {
-    const { btnText, backgroundColor, textColor, onPress } = this.props
+    const { btnText, backgroundColor, textColor, onPress, borderColor } = this.props
 
     return (
       <TouchableOpacity
-        style={[styles.button, { backgroundColor } ]}
+        style={[styles.button, { backgroundColor, borderColor } ]}
         onPress={onPress}
       >
         <Text style={[styles.btnText, { color: textColor }]}>
@@ -33,7 +34,8 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     height: 48,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderWidth: 1
   },
   btnText: {
     fontSize: 14
