@@ -5,7 +5,9 @@ import {View} from "react-native";
 import {TabHeader} from "../../components/common/TabHeader";
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    username: state.toDos.username
+  }
 }
 
 const mapDispatchToProps = { // short-hand dispatch syntax ftw
@@ -18,11 +20,9 @@ const mapDispatchToProps = { // short-hand dispatch syntax ftw
  */
 class ProfileContainerBase extends Component {
   render() {
-    const username = 'Ali' // FIX ME
-
     return (
       <View style={{flex: 1, backgroundColor: 'white'}}>
-        <TabHeader headerText={`Hello, ${username}`}/>
+        <TabHeader headerText={`Hello, ${this.props.username}`}/>
         <ProfileMain/>
       </View>
     )

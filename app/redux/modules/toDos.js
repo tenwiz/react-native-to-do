@@ -100,7 +100,31 @@ export const logoutAndFlushTodo = username => dispatch => {
 //   },
 // }
 
-const toDos = (state = {}, action) => {
+const dummyData = { // FIX ME
+  username: 'Martian',
+  userToDos: [
+    {
+      task: 'Build a React Native app',
+      color: 'blue',
+      deadline: 'tomorrow',
+      todoId: 1,
+    },
+    {
+      task: 'Write tests',
+      color: 'blue',
+      deadline: 'tomorrow',
+      todoId: 2,
+    },
+    {
+      task: 'Design app',
+      color: 'blue',
+      deadline: 'yesterday',
+      todoId: 3,
+    },
+  ]
+}
+
+const toDos = (state = dummyData, action) => {
   const { type, username, userToDos,
     task, color, deadline, todoId } = action
 
@@ -109,37 +133,27 @@ const toDos = (state = {}, action) => {
     case CLEAR_TODO :
       return {
         ...state,
-        [username]: {
-          username,
-          userToDos: []
-        }
+        username,
+        userToDos: []
       }
     case STORE_TODO :
       return {
         ...state,
-        [username]: {
-          username,
-          userToDos
-        }
+        username,
+        userToDos
       }
     case CREATE_TODO :
       return {
         ...state,
-        [username]: {
-          ...state.username,
-          userToDos: [
-            ...state.username.userToDos,
-            { task, color, deadline, todoId }
-          ]
-        }
+        userToDos: [
+          ...state.userToDos,
+          { task, color, deadline, todoId }
+        ]
       }
     case REMOVE_TODO :
       return {
         ...state,
-        [username]: {
-          ...state.username,
-          userToDos: userToDos.filter(toDo => toDo.todoId !== todoId)
-        }
+        userToDos: userToDos.filter(toDo => toDo.todoId !== todoId)
       }
     default :
       return state
