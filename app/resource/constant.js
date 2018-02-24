@@ -1,3 +1,4 @@
+export const paddingValue = 16
 export const commonPadding = {
-  height: 16
+  height: paddingValue
 }

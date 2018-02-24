@@ -5,7 +5,7 @@ import {appLogo} from "../../resource/image/image";
 import {InputField} from "../common/InputField";
 import { reduxForm, Field } from 'redux-form'
 import {commonFontFamily} from "../../resource/font";
-import {commonPadding} from "../../resource/constant";
+import {commonPadding, paddingValue} from "../../resource/constant";
 
 const LogoWithText = () => (
   <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
@@ -24,7 +24,7 @@ class LoginMain extends Component {
     const { handleSubmit } = this.props
 
     return (
-      <View style={{flex: 1, backgroundColor: 'white', padding: 16}}>
+      <View style={{flex: 1, backgroundColor: 'white', padding: paddingValue}}>
         <LogoWithText/>
         <Field
           name={'username'}
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   logoImg: {
     width: 88,
     height: 96,
-    marginBottom: 16
+    marginBottom: paddingValue
   },
   logoText: {
     fontSize: 24,

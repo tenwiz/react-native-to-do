@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Text, TouchableOpacity, StyleSheet} from 'react-native'
 import {BUTTON_COLOR} from "../../resource/color";
 import {commonFontFamily} from "../../resource/font";
+import {paddingValue} from "../../resource/constant";
 
 /**
  * Design: ReplaceMe!
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 4,
     height: 48,
-    paddingTop: 16,
+    paddingTop: paddingValue,
     alignItems: 'center',
     borderWidth: 1
   },

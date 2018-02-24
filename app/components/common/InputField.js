@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {TextInput, StyleSheet} from "react-native";
 import {INPUT_BORDER, PLACEHOLDER_COLOR} from "../../resource/color";
 import {commonFontFamily} from "../../resource/font";
+import {paddingValue} from "../../resource/constant";
 
 /**
  * Design: ReplaceMe!
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     borderWidth: 1,
     paddingHorizontal: 12,
-    paddingTop: 16,
+    paddingTop: paddingValue,
     paddingBottom: 15,
     fontSize: 14,
     ...commonFontFamily

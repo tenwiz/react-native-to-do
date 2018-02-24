@@ -4,7 +4,7 @@ import {CustomButton} from "../common/CustomButton";
 import { reduxForm, Field } from 'redux-form'
 import {InputField} from "../common/InputField";
 import {MUTILINE_INPUT_BORDER} from "../../resource/color";
-import {commonPadding} from "../../resource/constant";
+import {commonPadding, paddingValue} from "../../resource/constant";
 import {toDoColor} from "../../resource/image/image";
 import {ColorOption} from "./ColorOption";
 
@@ -14,7 +14,7 @@ import {ColorOption} from "./ColorOption";
 class AddTodoMain extends Component {
   render() {
     return (
-      <View style={{flex:1, padding: 16}}>
+      <View style={{flex:1, padding: paddingValue}}>
         <Field
           name={'task'}
           component={InputField}

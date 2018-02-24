@@ -5,7 +5,9 @@ import {FeedMain} from "../../components/Feed/FeedMain";
 import {TabHeader} from "../../components/common/TabHeader";
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    userToDos: state.toDos.userToDos
+  }
 }
 
 const mapDispatchToProps = { // short-hand dispatch syntax ftw
@@ -21,7 +23,7 @@ class FeedContainerBase extends Component {
     return (
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <TabHeader headerText={'Todo'}/>
-        <FeedMain/>
+        <FeedMain userToDos={this.props.userToDos}/>
       </View>
     )
   }

@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {View, Text, StyleSheet} from 'react-native'
 import {HEADER_COLOR, HEADER_TEXT_COLOR} from "../../resource/color";
 import {commonFontFamily} from "../../resource/font";
+import {paddingValue} from "../../resource/constant";
 
 /**
  * Design: ReplaceMe!
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
   headerText: {
     color: HEADER_TEXT_COLOR,
     fontSize: 32,
-    padding: 16,
+    padding: paddingValue,
     ...commonFontFamily
   }
 })
