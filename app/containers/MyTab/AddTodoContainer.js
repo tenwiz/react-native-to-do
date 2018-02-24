@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {NewTodoMain} from "../../components/NewTodo/NewTodoMain";
 import {TabHeader} from "../../components/common/TabHeader";
 import {View} from "react-native";
+import AddTodoMain from "../../components/AddTodo/AddTodoMain";
 
 const mapStateToProps = (state) => {
   return {}
@@ -16,15 +16,15 @@ const mapDispatchToProps = { // short-hand dispatch syntax ftw
 /**
  * Design: ReplaceMe!
  */
-class NewTodoContainerBase extends Component {
+class AddTodoContainerBase extends Component {
   render() {
     return (
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <TabHeader headerText={'Add'}/>
-        <NewTodoMain/>
+        <AddTodoMain/>
       </View>
     )
   }
 }
 
-export const NewTodoContainer = connect(mapStateToProps, mapDispatchToProps)(NewTodoContainerBase)
+export const AddTodoContainer = connect(mapStateToProps, mapDispatchToProps)(AddTodoContainerBase)

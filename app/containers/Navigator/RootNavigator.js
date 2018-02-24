@@ -3,10 +3,9 @@ import {Image} from "react-native";
 import { StackNavigator, TabNavigator } from 'react-navigation'
 import {LoginContainer} from "../Login/LoginContainer"
 import {FeedContainer} from "../MyTab/FeedContainer";
-import {NewTodoContainer} from "../MyTab/NewTodoContainer";
+import {AddTodoContainer} from "../MyTab/AddTodoContainer";
 import {ProfileContainer} from "../MyTab/ProfileContainer";
 import {addIn, addOut, feedIn, feedOut, profileIn, profileOut} from "../../images/assets";
-import {deviceWidth} from "../../util/dimensions";
 
 const commonNavigationOptions = {
   header: null
@@ -21,9 +20,9 @@ const FeedStack = StackNavigator({
   },
 })
 
-const NewTodoStack = StackNavigator({
-  NewTodo: {
-    screen: NewTodoContainer,
+const AddTodoStack = StackNavigator({
+  AddTodo: {
+    screen: AddTodoContainer,
     navigationOptions: {
       ...commonNavigationOptions,
     },
@@ -56,8 +55,8 @@ const MyTabRouteConfigs = {
       ),
     },
   },
-  NewTodoStack: {
-    screen: NewTodoStack,
+  AddTodoStack: {
+    screen: AddTodoStack,
     navigationOptions: {
       ...commonNavigationOptions,
       tabBarIcon: ({ focused }) => (
@@ -76,14 +75,11 @@ const MyTabRouteConfigs = {
   },
 }
 
-const iconWidth = 50
-const iconPadding = 20
-
 const TabNavigatorConfig = {
   tabBarOptions: {
     showLabel: false,
     style: {
-      paddingHorizontal: (deviceWidth - iconWidth * 3 - iconPadding * 2) / 2,
+      paddingHorizontal: 85,
       backgroundColor: 'white'
     },
   }
