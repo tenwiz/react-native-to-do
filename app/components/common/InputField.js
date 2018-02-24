@@ -7,12 +7,14 @@ import {INPUT_BORDER} from "../../resource/color";
  */
 export class InputField extends Component {
   render() {
-    const { placeholder } = this.props
+    const { input, ...inputProps } = this.props
 
     return (
       <TextInput
+        {...inputProps}
+        onChangeText={input.onChange}
+        value={input.value}
         style={styles.input}
-        placeholder={placeholder}
       />
     )
   }

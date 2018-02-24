@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {LoginMain} from "../../components/Login/LoginMain";
+import LoginMain from "../../components/Login/LoginMain";
 
 const mapStateToProps = (state) => {
   return {}
@@ -16,7 +16,7 @@ const mapDispatchToProps = { // short-hand dispatch syntax ftw
  */
 class LoginContainerBase extends Component {
   render() {
-    return <LoginMain/>;
+    return <LoginMain onSubmit={values => console.log(values)}/>;
   }
 }
 

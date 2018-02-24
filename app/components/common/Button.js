@@ -13,10 +13,13 @@ export class Button extends Component {
   }
 
   render() {
-    const { btnText, backgroundColor, textColor } = this.props
+    const { btnText, backgroundColor, textColor, onPress } = this.props
 
     return (
-      <TouchableOpacity style={[styles.button, { backgroundColor } ]}>
+      <TouchableOpacity
+        style={[styles.button, { backgroundColor } ]}
+        onPress={onPress}
+      >
         <Text style={[styles.btnText, { color: textColor }]}>
           {btnText}
         </Text>
