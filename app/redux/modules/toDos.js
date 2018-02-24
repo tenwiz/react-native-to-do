@@ -93,6 +93,7 @@ export const logoutAndFlushTodo = username => dispatch => {
 //           task: '',
 //           color: '',
 //           deadline: 0,
+//           complete: false,
 //           todoId: 0
 //         }
 //       ],
@@ -107,18 +108,21 @@ const dummyData = { // FIX ME
       task: 'Build a React Native app',
       color: 'blue',
       deadline: 'tomorrow',
+      complete: false,
       todoId: 1,
     },
     {
       task: 'Write tests',
       color: 'blue',
       deadline: 'tomorrow',
+      complete: false,
       todoId: 2,
     },
     {
       task: 'Design app',
       color: 'blue',
       deadline: 'yesterday',
+      complete: true,
       todoId: 3,
     },
   ]

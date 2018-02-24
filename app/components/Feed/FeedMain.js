@@ -1,51 +1,85 @@
 import React, {Component} from 'react'
-import {View, Text, FlatList, StyleSheet, Image} from 'react-native'
+import {View, Text, FlatList, StyleSheet, Image, Alert} from 'react-native'
 import {DEADLINE_COLOR, TASK_DONE} from "../../resource/color";
 import {commonPadding, paddingValue} from "../../resource/constant";
 import {toDoColor} from "../../resource/image/image";
 import {cropText} from "../../util/text";
+import Swipeout from 'react-native-swipeout'
+import {commonFontFamily} from "../../resource/font";
 
 /**
  * Design: ReplaceMe!
  */
 export class FeedMain extends Component {
+  alertPresent = false
+
+  handleSwipe = (direction) => {
+    if (!this.alertPresent && direction === 'left') {
+      setTimeout(() => {
+        Alert.alert(
+          'Are you sure you want to delete this TODO?',
+          null,
+          [
+            {text: 'Cancel', onPress: () => this.alertPresent = false},
+            {text: 'OK', onPress: () => {
+                this.alertPresent = false
+                console.log('delete')
+              }},
+          ],
+          { cancelable: false }
+        )
+      }, 100)
+      this.alertPresent = true
+    } else if (direction === 'right') {
+      console.log('complete')
+    }
+  }
+
   renderItem = ({ item, index }) => (
-    <View>
+    <Swipeout
+      close
+      left={[]}
+      right={[]}
+      style={{backgroundColor: 'white', paddingHorizontal: paddingValue}}
+      onOpen={(sectionID, rowId, direction) => this.handleSwipe(direction)}
+    >
       {index === 0 && <View style={commonPadding}/>}
       <View style={styles.item}>
         <Image source={toDoColor[item.color]} style={styles.image}/>
         <View style={{justifyContent: 'space-between'}}>
-          {/*{FIX ME}*/}
-          <Text style={index !== 2 ? styles.task : styles.taskDone }>{cropText(item.task)}</Text>
-          <Text style={index !== 2 ? styles.deadline : styles.deadlineDone}>{`Due ${item.deadline}`}</Text>
+          <Text style={ item.complete ? styles.taskDone : styles.task }>{cropText(item.task)}</Text>
+          <Text style={ item.complete ? styles.deadlineDone : styles.deadline }>{`Due ${item.deadline}`}</Text>
         </View>
       </View>
-    </View>
+    </Swipeout>
   )
 
   render() {
     return (
-      <View
-        style={{flex:1, paddingHorizontal: paddingValue}}
-      >
-      <FlatList
-        data={this.props.userToDos}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={this.renderItem}
-      />
+      <View style={{flex:1}}>
+        <FlatList
+          data={this.props.userToDos}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={this.renderItem}
+        />
       </View>
     )
   }
 }
 
-const taskTextSize = 18
-const deadlineTextSize = 12
+const taskText = {
+  fontSize: 18,
+  ...commonFontFamily,
+}
+const deadlineText = {
+  fontSize: 12,
+  ...commonFontFamily,
+}
 
 const styles = StyleSheet.create({
   item: {
     flexDirection: 'row',
     height: 43,
-    // backgroundColor: 'green', // FIX ME
     marginBottom: paddingValue,
   },
   image: {
@@ -55,19 +89,19 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
   task: {
-    fontSize: taskTextSize,
+    ...taskText
   },
   taskDone: {
-    fontSize: taskTextSize,
+    ...taskText,
     color: TASK_DONE,
     textDecorationLine: 'line-through'
   },
   deadline: {
-    fontSize: deadlineTextSize,
+    ...deadlineText,
     color: DEADLINE_COLOR
   },
   deadlineDone: {
-    fontSize: deadlineTextSize,
+    ...deadlineText,
     color: TASK_DONE,
   }
 })
