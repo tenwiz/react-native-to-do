@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
 import {View, Text, Image, StyleSheet} from 'react-native'
 import {CustomButton} from "../common/CustomButton";
-import {appLogo} from "../../images/assets";
+import {appLogo} from "../../resource/image/image";
 import {InputField} from "../common/InputField";
 import { reduxForm, Field } from 'redux-form'
+import {commonFontFamily} from "../../resource/font";
+import {commonPadding} from "../../resource/constant";
 
 const LogoWithText = () => (
   <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
@@ -29,7 +31,7 @@ class LoginMain extends Component {
           component={InputField}
           placeholder={'Name'}
         />
-        <View style={{height: 16}}/>
+        <View style={commonPadding}/>
         <CustomButton btnText={'Login'} onPress={handleSubmit}/>
       </View>
     )
@@ -43,7 +45,8 @@ const styles = StyleSheet.create({
     marginBottom: 16
   },
   logoText: {
-    fontSize: 24
+    fontSize: 24,
+    ...commonFontFamily
   }
 })
 

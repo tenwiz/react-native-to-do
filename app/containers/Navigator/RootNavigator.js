@@ -5,7 +5,7 @@ import {LoginContainer} from "../Login/LoginContainer"
 import {FeedContainer} from "../MyTab/FeedContainer";
 import {AddTodoContainer} from "../MyTab/AddTodoContainer";
 import {ProfileContainer} from "../MyTab/ProfileContainer";
-import {addIn, addOut, feedIn, feedOut, profileIn, profileOut} from "../../images/assets";
+import {addIn, addOut, feedIn, feedOut, profileIn, profileOut} from "../../resource/image/image";
 
 const commonNavigationOptions = {
   header: null

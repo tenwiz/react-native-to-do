@@ -84,7 +84,7 @@ export const logoutAndFlushTodo = username => dispatch => {
   //   })
 }
 
-// const store = {
+// const store = { // FIX ME
 //   toDos: {
 //     [username]: {
 //       username: '',

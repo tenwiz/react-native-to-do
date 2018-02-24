@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Text, TouchableOpacity, StyleSheet} from 'react-native'
 import {BUTTON_COLOR} from "../../resource/color";
+import {commonFontFamily} from "../../resource/font";
 
 /**
  * Design: ReplaceMe!
@@ -33,11 +34,12 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 4,
     height: 48,
-    justifyContent: 'center',
+    paddingTop: 16,
     alignItems: 'center',
     borderWidth: 1
   },
   btnText: {
-    fontSize: 14
+    fontSize: 14,
+    ...commonFontFamily
   }
 })
