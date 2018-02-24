@@ -37,6 +37,9 @@ const MyTab = TabNavigator({
 const RootNavigator = StackNavigator({
   Login: {
     screen: LoginContainer,
+    navigationOptions: {
+      header: null,
+    },
   },
   MyTab: {
     screen: MyTab
