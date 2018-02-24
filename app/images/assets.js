@@ -1,1 +1,7 @@
 export const appLogo = require('./logo.png')
+export const feedIn = require('./feedIn.png')
+export const feedOut = require('./feedOut.png')
+export const addIn = require('./addIn.png')
+export const addOut = require('./addOut.png')
+export const profileIn = require('./profileIn.png')
+export const profileOut = require('./profileOut.png')

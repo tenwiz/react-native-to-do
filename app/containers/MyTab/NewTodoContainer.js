@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {NewTodoMain} from "../../components/NewTodo/NewTodoMain";
+import {TabHeader} from "../../components/common/TabHeader";
+import {View} from "react-native";
 
 const mapStateToProps = (state) => {
   return {}
@@ -16,7 +18,12 @@ const mapDispatchToProps = { // short-hand dispatch syntax ftw
  */
 class NewTodoContainerBase extends Component {
   render() {
-    return <NewTodoMain/>
+    return (
+      <View style={{flex: 1, backgroundColor: 'white'}}>
+        <TabHeader headerText={'Add'}/>
+        <NewTodoMain/>
+      </View>
+    )
   }
 }
 

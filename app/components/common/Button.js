@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Text, TouchableOpacity, StyleSheet} from 'react-native'
-import {BUTTON_GREEN} from "../../resource/color";
+import {BUTTON_COLOR} from "../../resource/color";
 
 /**
  * Design: ReplaceMe!
@@ -9,7 +9,7 @@ export class Button extends Component {
   static defaultProps = {
     btnText: 'Continue',
     textColor: 'white',
-    backgroundColor: BUTTON_GREEN
+    backgroundColor: BUTTON_COLOR
   }
 
   render() {
