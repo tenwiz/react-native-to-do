@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {View, Text, FlatList, StyleSheet, Image, Alert} from 'react-native'
 import {DEADLINE_COLOR, TASK_DONE} from "../../resource/color";
 import {commonPadding, paddingValue} from "../../resource/constant";
-import {toDoColor} from "../../resource/image/image";
+import {todoColor} from "../../resource/image/image";
 import {cropText} from "../../util/text";
 import Swipeout from 'react-native-swipeout'
 import {commonFontFamily} from "../../resource/font";
@@ -14,8 +14,10 @@ import {convertDateToWord} from "../../util/time";
 export class FeedMain extends Component {
   alertPresent = false
 
-  handleSwipe = direction => {
-    if (!this.alertPresent && direction === 'left') {
+  handleSwipe = (direction, todoId) => {
+    const { completeTodo } = this.props
+
+    if (!this.alertPresent && direction === 'right') { // Slide left
       setTimeout(() => {
         Alert.alert(
           'Are you sure you want to delete this TODO?',
@@ -31,8 +33,8 @@ export class FeedMain extends Component {
         )
       }, 100)
       this.alertPresent = true
-    } else if (direction === 'right') {
-      console.log('complete')
+    } else if (direction === 'left') { // Slide right
+      completeTodo(todoId)
     }
   }
 
@@ -42,11 +44,11 @@ export class FeedMain extends Component {
       left={[]}
       right={[]}
       style={{backgroundColor: 'white', paddingHorizontal: paddingValue}}
-      onOpen={(sectionID, rowId, direction) => this.handleSwipe(direction)}
+      onOpen={(sectionID, rowId, direction) => this.handleSwipe(direction, item.todoId)}
     >
       {index === 0 && <View style={commonPadding}/>}
       <View style={styles.item}>
-        <Image source={toDoColor[item.color]} style={styles.image}/>
+        <Image source={todoColor[item.color]} style={styles.image}/>
         <View style={{justifyContent: 'space-between'}}>
           <Text
             style={ item.complete ? styles.taskDone : styles.task }

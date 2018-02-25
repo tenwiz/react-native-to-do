@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {FeedMain} from "../../components/Feed/FeedMain";
 import {TabHeader} from "../../components/common/TabHeader";
 import {sortDate} from "../../util/time";
+import {completeTodo} from "../../redux/modules/toDos";
 
 const mapStateToProps = (state) => {
   return {
@@ -12,8 +13,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = { // short-hand dispatch syntax ftw
-  someDispatcher: () => {
-  },
+  completeTodo
 }
 
 /**
@@ -21,10 +21,12 @@ const mapDispatchToProps = { // short-hand dispatch syntax ftw
  */
 class FeedContainerBase extends Component {
   render() {
+    const { userToDos, completeTodo } = this.props
+
     return (
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <TabHeader headerText={'Todo'}/>
-        <FeedMain userToDos={sortDate(this.props.userToDos)}/>
+        <FeedMain userToDos={sortDate(userToDos)} completeTodo={completeTodo}/>
       </View>
     )
   }

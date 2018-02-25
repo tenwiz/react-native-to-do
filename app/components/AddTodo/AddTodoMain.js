@@ -5,7 +5,7 @@ import { reduxForm, Field } from 'redux-form'
 import {InputField} from "../common/InputField";
 import {MUTILINE_INPUT_BORDER} from "../../resource/color";
 import {commonPadding, paddingValue} from "../../resource/constant";
-import {toDoColor} from "../../resource/image/image";
+import {todoColor} from "../../resource/image/image";
 import {ColorOption} from "./ColorOption";
 import {CustomDatePicker} from "./CustomDatePicker";
 
@@ -31,7 +31,7 @@ class AddTodoMain extends Component {
         />
         <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 32}}>
           {
-            Object.keys(toDoColor).map((color, index) => (
+            Object.keys(todoColor).map((color, index) => (
               <Field
                 key={index}
                 name={'color'}

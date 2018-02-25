@@ -3,16 +3,15 @@ import uuidv4 from 'uuid/v4'
 const CREATE_USER = 'CREATE_USER'
 const STORE_TODO = 'STORE_TODO'
 const CREATE_TODO = 'CREATE_TODO'
+const COMPLETE_TODO = 'COMPLETE_TODO'
 const REMOVE_TODO = 'REMOVE_TODO'
 const CLEAR_TODO = 'CLEAR_TODO'
 
 export const createUser = ({ username }) => dispatch => (
-  dispatch(
-    {
-      type: CREATE_USER,
-      username
-    }
-  )
+  dispatch({
+    type: CREATE_USER,
+    username
+  })
 )
 
 const storeTodo = (username, userToDos) => (
@@ -24,16 +23,21 @@ const storeTodo = (username, userToDos) => (
 )
 
 export const createTodo = ({ task, color, deadline }) => dispatch =>  (
-  dispatch(
-    {
-      type: CREATE_TODO,
-      task,
-      color,
-      deadline,
-      todoId: uuidv4(),
-      complete: false
-    }
-  )
+  dispatch({
+    type: CREATE_TODO,
+    task,
+    color,
+    deadline,
+    todoId: uuidv4(),
+    complete: false
+  })
+)
+
+export const completeTodo = (todoId) => dispatch => (
+  dispatch({
+    type: COMPLETE_TODO,
+    todoId
+  })
 )
 
 const removeTodo = (username, todoId) => (
@@ -159,10 +163,22 @@ const toDos = (state = dummyData, action) => {
           { task, color, deadline, todoId, complete }
         ]
       }
+    case COMPLETE_TODO :
+      return {
+        ...state,
+        userToDos: state.userToDos.map(todo => {
+          return todo.todoId === todoId
+            ? {
+              ...todo,
+              complete: true
+            }
+            : todo
+        })
+      }
     case REMOVE_TODO :
       return {
         ...state,
-        userToDos: userToDos.filter(toDo => toDo.todoId !== todoId)
+        userToDos: userToDos.filter(todo => todo.todoId !== todoId)
       }
     default :
       return state
