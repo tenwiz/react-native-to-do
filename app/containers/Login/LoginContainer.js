@@ -4,10 +4,11 @@ import LoginMain from "../../components/Login/LoginMain";
 import {bindActionCreators} from 'redux'
 import * as toDosActions from "../../redux/modules/toDos";
 import configureStore from '../../configureStore'
+import {resetStack} from "../../util/navigation";
 
-const mapStateToProps = (state) => (
-  {}
-)
+const mapStateToProps = ({ currentUser }) => ({
+  username: currentUser.username
+})
 
 const mapDispatchToProps = (dispatch) => ( // short-hand dispatch syntax ftw
   bindActionCreators(toDosActions, dispatch)
@@ -18,7 +19,12 @@ const mapDispatchToProps = (dispatch) => ( // short-hand dispatch syntax ftw
  */
 class LoginContainerBase extends Component {
   componentDidMount() {
-    // this.props.clearAll()
+    const { clearRedux, username, navigation } = this.props
+
+    // clearRedux()
+    if (username !== '') {
+      resetStack('MyTab', navigation)
+    }
   }
 
   render() {

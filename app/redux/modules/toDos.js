@@ -7,7 +7,7 @@ const CREATE_TODO = 'CREATE_TODO'
 const COMPLETE_TODO = 'COMPLETE_TODO'
 const REMOVE_TODO = 'REMOVE_TODO'
 const CLEAR_TODO = 'CLEAR_TODO'
-const CLEAR_ALL = 'CLEAR_ALL'
+const CLEAR_ALL_USER = 'CLEAR_ALL_USER'
 
 const createUser = username => ({
   type: CREATE_USER,
@@ -41,8 +41,8 @@ const clearTodo = username => ({
   username
 })
 
-export const clearAll = () => ({
-  type: CLEAR_ALL
+const clearAllUser = () => ({
+  type: CLEAR_ALL_USER
 })
 
 export const userLogin = (username, navigation) => (dispatch, getState) => {
@@ -62,6 +62,11 @@ export const createTodoAndToFeed = (todo, navigation) => (dispatch, getState) =>
 export const clearTodoAndToLogin = (username, navigation) => dispatch => {
   dispatch(clearTodo(username))
   resetStack('Login', navigation)
+}
+
+export const clearRedux = () => dispatch => {
+  dispatch(clearAllUser())
+  dispatch(updateCurrentUser(''))
 }
 
 const toDos = (state = {}, action) => {
@@ -118,7 +123,7 @@ const toDos = (state = {}, action) => {
           userToDos: []
         }
       }
-    case CLEAR_ALL:
+    case CLEAR_ALL_USER:
       return {}
     default :
       return state
