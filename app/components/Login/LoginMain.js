@@ -21,8 +21,6 @@ const LogoWithText = () => (
  */
 class LoginMain extends Component {
   render() {
-    const { handleSubmit } = this.props
-
     return (
       <View style={{flex: 1, backgroundColor: 'white', padding: paddingValue}}>
         <LogoWithText/>
@@ -32,7 +30,7 @@ class LoginMain extends Component {
           placeholder={'Name'}
         />
         <View style={commonPadding}/>
-        <CustomButton btnText={'Login'} onPress={handleSubmit}/>
+        <CustomButton btnText={'Login'} onPress={this.props.handleSubmit}/>
       </View>
     )
   }

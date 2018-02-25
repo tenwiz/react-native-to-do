@@ -41,7 +41,7 @@ class AddTodoMain extends Component {
             ))
           }
         </View>
-        <CustomButton btnText={'Add'} onPress={() => console.log('add')}/>
+        <CustomButton btnText={'Add'} onPress={this.props.handleSubmit}/>
       </View>
     )
   }

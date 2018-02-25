@@ -6,11 +6,13 @@ const CREATE_TODO = 'CREATE_TODO'
 const REMOVE_TODO = 'REMOVE_TODO'
 const CLEAR_TODO = 'CLEAR_TODO'
 
-const createUser = username => (
-  {
-    type: CREATE_USER,
-    username
-  }
+export const createUser = ({ username }) => dispatch => (
+  dispatch(
+    {
+      type: CREATE_USER,
+      username
+    }
+  )
 )
 
 const storeTodo = (username, userToDos) => (
@@ -21,14 +23,17 @@ const storeTodo = (username, userToDos) => (
   }
 )
 
-const createTodo = ({ task, color, deadline, todoId }) => (
-  {
-    type: CREATE_TODO,
-    task,
-    color,
-    deadline,
-    todoId
-  }
+export const createTodo = ({ task, color, deadline }) => dispatch =>  (
+  dispatch(
+    {
+      type: CREATE_TODO,
+      task,
+      color,
+      deadline,
+      todoId: uuidv4(),
+      complete: false
+    }
+  )
 )
 
 const removeTodo = (username, todoId) => (
@@ -130,7 +135,7 @@ const dummyData = { // FIX ME
 
 const toDos = (state = dummyData, action) => {
   const { type, username, userToDos,
-    task, color, deadline, todoId } = action
+    task, color, deadline, todoId, complete } = action
 
   switch (type) {
     case CREATE_USER :
@@ -151,7 +156,7 @@ const toDos = (state = dummyData, action) => {
         ...state,
         userToDos: [
           ...state.userToDos,
-          { task, color, deadline, todoId }
+          { task, color, deadline, todoId, complete }
         ]
       }
     case REMOVE_TODO :

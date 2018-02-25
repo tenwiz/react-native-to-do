@@ -23,7 +23,7 @@ class ProfileContainerBase extends Component {
     return (
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <TabHeader headerText={`Hello, ${this.props.username}`}/>
-        <ProfileMain/>
+        <ProfileMain navigation={this.props.navigation}/>
       </View>
     )
   }
