@@ -7,6 +7,7 @@ import {MUTILINE_INPUT_BORDER} from "../../resource/color";
 import {commonPadding, paddingValue} from "../../resource/constant";
 import {toDoColor} from "../../resource/image/image";
 import {ColorOption} from "./ColorOption";
+import {CustomDatePicker} from "./CustomDatePicker";
 
 /**
  * Design: ReplaceMe!
@@ -26,8 +27,7 @@ class AddTodoMain extends Component {
         <View style={commonPadding}/>
         <Field
           name={'deadline'}
-          component={InputField}
-          placeholder={'When is it due?'}
+          component={CustomDatePicker}
         />
         <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 32}}>
           {

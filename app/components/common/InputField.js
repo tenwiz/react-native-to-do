@@ -4,14 +4,19 @@ import {INPUT_BORDER, PLACEHOLDER_COLOR} from "../../resource/color";
 import {commonFontFamily} from "../../resource/font";
 import {paddingValue} from "../../resource/constant";
 
+// Declare before defaultProps
+export const commonInputDefault = {
+  borderColor: INPUT_BORDER,
+  height: 48
+}
+
 /**
  * Design: ReplaceMe!
  */
 export class InputField extends Component {
   static defaultProps = {
     multiline: false,
-    borderColor: INPUT_BORDER,
-    height: 48
+    ...commonInputDefault
   }
 
   render() {
@@ -29,14 +34,22 @@ export class InputField extends Component {
   }
 }
 
+export const commonInput = {
+  borderRadius: 4,
+  borderWidth: 1,
+  paddingHorizontal: 12,
+  paddingTop: paddingValue,
+  paddingBottom: 15,
+}
+
+export const commonInputFont = {
+  fontSize: 14,
+  ...commonFontFamily
+}
+
 const styles = StyleSheet.create({
   input: {
-    borderRadius: 4,
-    borderWidth: 1,
-    paddingHorizontal: 12,
-    paddingTop: paddingValue,
-    paddingBottom: 15,
-    fontSize: 14,
-    ...commonFontFamily
+    ...commonInput,
+    ...commonInputFont
   }
 })
