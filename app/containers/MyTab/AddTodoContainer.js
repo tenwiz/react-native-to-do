@@ -24,7 +24,10 @@ class AddTodoContainerBase extends Component {
     return (
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <TabHeader headerText={'Add'}/>
-        <AddTodoMain onSubmit={todo => createTodoAndToFeed(todo, navigation)}/>
+        <AddTodoMain
+          onSubmit={({ task, deadline, color }) =>
+            task && deadline && color && createTodoAndToFeed({ task, deadline, color }, navigation)}
+        />
       </View>
     )
   }

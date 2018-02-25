@@ -11,7 +11,7 @@ const mapStateToProps = ({ toDos, currentUser }) => {
   const username = currentUser.username
 
   return {
-    userToDos: toDos[username].userToDos,
+    userToDos: toDos[username] ? toDos[username].userToDos : [],
     username
   }
 }

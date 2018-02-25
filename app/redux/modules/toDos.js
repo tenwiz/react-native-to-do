@@ -61,6 +61,7 @@ export const createTodoAndToFeed = (todo, navigation) => (dispatch, getState) =>
 
 export const clearTodoAndToLogin = (username, navigation) => dispatch => {
   dispatch(clearTodo(username))
+  dispatch(updateCurrentUser(''))
   resetStack('Login', navigation)
 }
 

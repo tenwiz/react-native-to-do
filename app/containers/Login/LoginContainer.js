@@ -7,7 +7,7 @@ import configureStore from '../../configureStore'
 import {resetStack} from "../../util/navigation";
 
 const mapStateToProps = ({ currentUser }) => ({
-  username: currentUser.username
+  username: currentUser.username || ''
 })
 
 const mapDispatchToProps = (dispatch) => ( // short-hand dispatch syntax ftw
@@ -31,7 +31,7 @@ class LoginContainerBase extends Component {
     const { userLogin, navigation } = this.props
 
     return (
-      <LoginMain onSubmit={({ username }) => userLogin(username, navigation)}/>
+      <LoginMain onSubmit={({ username }) => username && userLogin(username, navigation)}/>
     )
   }
 }
