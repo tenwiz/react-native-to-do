@@ -1,24 +1,18 @@
 import React, { Component } from 'react'
 import {AppContainer} from "./containers/App/AppContainer"
 import {Provider} from "react-redux"
-import {applyMiddleware, createStore} from "redux";
-import rootReducer from './redux'
-import thunk from "redux-thunk";
+import configureStore from './configureStore'
+import { PersistGate } from 'redux-persist/integration/react'
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-
-const store = createStore(
-  rootReducer,
-  composeEnhancers(
-    applyMiddleware(thunk)
-  )
-)
+const { store, persistor } = configureStore()
 
 export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <AppContainer/>
+        <PersistGate loading={null} persistor={persistor}>
+          <AppContainer/>
+        </PersistGate>
       </Provider>
     )
   }

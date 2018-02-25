@@ -3,27 +3,30 @@ import {connect} from 'react-redux'
 import {ProfileMain} from "../../components/Profile/ProfileMain";
 import {View} from "react-native";
 import {TabHeader} from "../../components/common/TabHeader";
+import {bindActionCreators} from "redux";
+import * as toDosActions from "../../redux/modules/toDos";
 
-const mapStateToProps = (state) => {
-  return {
-    username: state.toDos.username
-  }
-}
+const mapStateToProps = ({ currentUser }) => ({
+  username: currentUser.username
+})
 
-const mapDispatchToProps = { // short-hand dispatch syntax ftw
-  someDispatcher: () => {
-  },
-}
+const mapDispatchToProps = dispatch => ( // short-hand dispatch syntax ftw
+  bindActionCreators(toDosActions, dispatch)
+)
 
 /**
  * Design: ReplaceMe!
  */
 class ProfileContainerBase extends Component {
   render() {
+    const { username, clearTodoAndToLogin, navigation } = this.props
+
     return (
       <View style={{flex: 1, backgroundColor: 'white'}}>
-        <TabHeader headerText={`Hello, ${this.props.username}`}/>
-        <ProfileMain navigation={this.props.navigation}/>
+        <TabHeader headerText={`Hello, ${username}`}/>
+        <ProfileMain
+          clearTodoAndToLogin={() => clearTodoAndToLogin(username, navigation)}
+        />
       </View>
     )
   }

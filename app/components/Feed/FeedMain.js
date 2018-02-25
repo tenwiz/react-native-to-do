@@ -15,7 +15,7 @@ export class FeedMain extends Component {
   alertPresent = false
 
   handleSwipe = (direction, todoId) => {
-    const { completeTodo, removeTodo } = this.props
+    const { completeTodo, removeTodo, username } = this.props
 
     if (!this.alertPresent && direction === 'right') { // Slide left
       setTimeout(() => {
@@ -26,7 +26,7 @@ export class FeedMain extends Component {
             {text: 'Cancel', onPress: () => this.alertPresent = false},
             {text: 'OK', onPress: () => {
                 this.alertPresent = false
-                removeTodo(todoId)
+                removeTodo(username, todoId)
               }},
           ],
           { cancelable: false }
@@ -34,7 +34,7 @@ export class FeedMain extends Component {
       }, 100)
       this.alertPresent = true
     } else if (direction === 'left') { // Slide right
-      completeTodo(todoId)
+      completeTodo(username, todoId)
     }
   }
 

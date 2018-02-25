@@ -2,15 +2,16 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {View} from "react-native";
 import RootNavigator from "../Navigator/RootNavigator";
+import {bindActionCreators} from "redux";
 
-const mapStateToProps = (state) => {
-  return {}
-}
+const mapStateToProps = (state) => (
+  {}
+)
 
-const mapDispatchToProps = { // short-hand dispatch syntax ftw
-  someDispatcher: () => {
-  },
-}
+const mapDispatchToProps = dispatch => ( // short-hand dispatch syntax ftw
+  // bindActionCreators(someActions, dispatch)
+  {}
+)
 
 /**
  * Design: ReplaceMe!

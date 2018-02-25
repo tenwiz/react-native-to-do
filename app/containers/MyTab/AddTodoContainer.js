@@ -3,31 +3,28 @@ import {connect} from 'react-redux'
 import {TabHeader} from "../../components/common/TabHeader";
 import {View} from "react-native";
 import AddTodoMain from "../../components/AddTodo/AddTodoMain";
-import {createTodo} from "../../redux/modules/toDos";
-import {resetStack} from "../../util/navigation";
+import * as toDosActions from "../../redux/modules/toDos";
+import {bindActionCreators} from "redux";
 
-const mapStateToProps = (state) => {
-  return {}
-}
+const mapStateToProps = (state) => (
+  {}
+)
 
-const mapDispatchToProps = { // short-hand dispatch syntax ftw
-  createTodo
-}
+const mapDispatchToProps = (dispatch) => ( // short-hand dispatch syntax ftw
+  bindActionCreators(toDosActions, dispatch)
+)
 
 /**
  * Design: ReplaceMe!
  */
 class AddTodoContainerBase extends Component {
   render() {
-    const { createTodo, navigation } = this.props
+    const { createTodoAndToFeed, navigation } = this.props
 
     return (
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <TabHeader headerText={'Add'}/>
-        <AddTodoMain onSubmit={value => {
-          createTodo(value)
-          resetStack('MyTab', navigation)
-        }}/>
+        <AddTodoMain onSubmit={todo => createTodoAndToFeed(todo, navigation)}/>
       </View>
     )
   }

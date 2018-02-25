@@ -1,29 +1,32 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import LoginMain from "../../components/Login/LoginMain";
-import MyTab from "../Navigator/RootNavigator";
-import {resetStack} from "../../util/navigation";
-import {createUser} from "../../redux/modules/toDos";
+import {bindActionCreators} from 'redux'
+import * as toDosActions from "../../redux/modules/toDos";
+import configureStore from '../../configureStore'
 
-const mapStateToProps = (state) => {
-  return {}
-}
+const mapStateToProps = (state) => (
+  {}
+)
 
-const mapDispatchToProps = { // short-hand dispatch syntax ftw
-  createUser
-}
+const mapDispatchToProps = (dispatch) => ( // short-hand dispatch syntax ftw
+  bindActionCreators(toDosActions, dispatch)
+)
 
 /**
  * Design: ReplaceMe!
  */
 class LoginContainerBase extends Component {
-  render() {
-    const { createUser, navigation } = this.props
+  componentDidMount() {
+    // this.props.clearAll()
+  }
 
-    return <LoginMain onSubmit={value => {
-      createUser(value)
-      resetStack('MyTab', navigation)
-    }}/>
+  render() {
+    const { userLogin, navigation } = this.props
+
+    return (
+      <LoginMain onSubmit={({ username }) => userLogin(username, navigation)}/>
+    )
   }
 }
 

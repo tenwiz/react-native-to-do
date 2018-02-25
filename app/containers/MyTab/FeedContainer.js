@@ -4,25 +4,28 @@ import {connect} from 'react-redux'
 import {FeedMain} from "../../components/Feed/FeedMain";
 import {TabHeader} from "../../components/common/TabHeader";
 import {sortDate} from "../../util/time";
-import {completeTodo, removeTodo} from "../../redux/modules/toDos";
+import * as toDosActions from "../../redux/modules/toDos";
+import {bindActionCreators} from "redux";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ toDos, currentUser }) => {
+  const username = currentUser.username
+
   return {
-    userToDos: state.toDos.userToDos
+    userToDos: toDos[username].userToDos,
+    username
   }
 }
 
-const mapDispatchToProps = { // short-hand dispatch syntax ftw
-  completeTodo,
-  removeTodo
-}
+const mapDispatchToProps = (dispatch) => ( // short-hand dispatch syntax ftw
+  bindActionCreators(toDosActions, dispatch)
+)
 
 /**
  * Design: ReplaceMe!
  */
 class FeedContainerBase extends Component {
   render() {
-    const { userToDos, completeTodo, removeTodo } = this.props
+    const { userToDos, username, completeTodo, removeTodo } = this.props
 
     return (
       <View style={{flex: 1, backgroundColor: 'white'}}>
@@ -31,6 +34,7 @@ class FeedContainerBase extends Component {
           userToDos={sortDate(userToDos)}
           completeTodo={completeTodo}
           removeTodo={removeTodo}
+          username={username}
         />
       </View>
     )

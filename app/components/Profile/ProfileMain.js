@@ -3,7 +3,6 @@ import {View} from 'react-native'
 import {CustomButton} from "../common/CustomButton";
 import {BUTTON_ALERT} from "../../resource/color";
 import {paddingValue} from "../../resource/constant";
-import {resetStack} from "../../util/navigation";
 
 /**
  * Design: ReplaceMe!
@@ -17,7 +16,7 @@ export class ProfileMain extends Component {
           textColor={BUTTON_ALERT}
           borderColor={BUTTON_ALERT}
           backgroundColor={'white'}
-          onPress={() => resetStack('Login', this.props.navigation)}
+          onPress={this.props.clearTodoAndToLogin}
         />
       </View>
     )

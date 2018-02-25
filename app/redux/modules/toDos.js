@@ -1,184 +1,125 @@
 import uuidv4 from 'uuid/v4'
+import {resetStack} from "../../util/navigation";
+import {updateCurrentUser} from "./currentUser";
 
 const CREATE_USER = 'CREATE_USER'
-const STORE_TODO = 'STORE_TODO'
 const CREATE_TODO = 'CREATE_TODO'
 const COMPLETE_TODO = 'COMPLETE_TODO'
 const REMOVE_TODO = 'REMOVE_TODO'
 const CLEAR_TODO = 'CLEAR_TODO'
+const CLEAR_ALL = 'CLEAR_ALL'
 
-export const createUser = ({ username }) => dispatch => (
-  dispatch({
-    type: CREATE_USER,
-    username
-  })
-)
+const createUser = username => ({
+  type: CREATE_USER,
+  username
+})
 
-const storeTodo = (username, userToDos) => (
-  {
-    type: STORE_TODO,
-    username,
-    userToDos
+const createTodo = ({ username, task, color, deadline }) =>  ({
+  type: CREATE_TODO,
+  username,
+  task,
+  color,
+  deadline,
+  todoId: uuidv4(),
+  complete: false
+})
+
+export const completeTodo = (username, todoId) => ({
+  type: COMPLETE_TODO,
+  username,
+  todoId
+})
+
+export const removeTodo = (username, todoId) => ({
+  type: REMOVE_TODO,
+  username,
+  todoId
+})
+
+const clearTodo = username => ({
+  type: CLEAR_TODO,
+  username
+})
+
+export const clearAll = () => ({
+  type: CLEAR_ALL
+})
+
+export const userLogin = (username, navigation) => (dispatch, getState) => {
+  if (!Object.keys(getState().toDos).includes(username)) {
+    dispatch(createUser(username))
   }
-)
-
-export const createTodo = ({ task, color, deadline }) => dispatch =>  (
-  dispatch({
-    type: CREATE_TODO,
-    task,
-    color,
-    deadline,
-    todoId: uuidv4(),
-    complete: false
-  })
-)
-
-export const completeTodo = (todoId) => dispatch => (
-  dispatch({
-    type: COMPLETE_TODO,
-    todoId
-  })
-)
-
-export const removeTodo = (todoId) => dispatch => (
-  dispatch({
-    type: REMOVE_TODO,
-    todoId
-  })
-)
-
-const clearTodo = username => (
-  {
-    type: CLEAR_TODO,
-    username
-  }
-)
-
-export const fetchOrCreateUser = username => dispatch => {
-  // fetchUser(username)
-  //   .then(userToDos => {
-  //     userToDos.length === 0
-  //       ? dispatch(createUser(username))
-  //       : dispatch(storeTodo(username, userToDos))
-  //   })
-  //   .catch(err => {
-  //     console.warn('Error in fetchUser', err)
-  //   })
+  dispatch(updateCurrentUser(username))
+  resetStack('MyTab', navigation)
 }
 
-// todoInfo = { task, color, deadline }
-export const createAndSaveTodo = (todoInfo) => dispatch => {
-  const todoId = uuidv4()
-  // saveTodo({ ...todoInfo, todoId })
-  //   .then(() => dispatch(createTodo({ ...todoInfo, todoId })))
-  //   .catch(err => {
-  //     console.warn('Error in saveTodo', err)
-  //   })
+export const createTodoAndToFeed = (todo, navigation) => (dispatch, getState) => {
+  const username = getState().currentUser.username
+  dispatch(createTodo({ ...todo, username }))
+  resetStack('MyTab', navigation)
 }
 
-export const removeAndDeleteTodo = (username, todoId) => dispatch => {
-  // deleteTodo(username, todoId)
-  //   .then(() => dispatch(removeTodo(username, todoId)))
-  //   .catch(err => {
-  //     console.warn('Error in deleteTodo', err)
-  //   })
+export const clearTodoAndToLogin = (username, navigation) => dispatch => {
+  dispatch(clearTodo(username))
+  resetStack('Login', navigation)
 }
 
-export const logoutAndFlushTodo = username => dispatch => {
-  // flushTodo(username)
-  //   .then(() => dispatch(clearTodo(username)))
-  //   .catch(err => {
-  //     console.warn('Error in clearTodo', err)
-  //   })
-}
-
-// const store = { // FIX ME
-//   toDos: {
-//     [username]: {
-//       username: '',
-//       userToDos: [
-//         {
-//           task: '',
-//           color: '',
-//           deadline: 0,
-//           complete: false,
-//           todoId: 0
-//         }
-//       ],
-//     }
-//   },
-// }
-
-const dummyData = { // FIX ME
-  username: 'Martian',
-  userToDos: [
-    {
-      task: 'Build a React Native app',
-      color: 'blue',
-      deadline: 'tomorrow',
-      complete: false,
-      todoId: 1,
-    },
-    {
-      task: 'Write tests',
-      color: 'blue',
-      deadline: 'tomorrow',
-      complete: false,
-      todoId: 2,
-    },
-    {
-      task: 'Design app',
-      color: 'blue',
-      deadline: 'yesterday',
-      complete: true,
-      todoId: 3,
-    },
-  ]
-}
-
-const toDos = (state = dummyData, action) => {
-  const { type, username, userToDos,
-    task, color, deadline, todoId, complete } = action
+const toDos = (state = {}, action) => {
+  const { type, username, task, color, deadline, todoId, complete } = action
 
   switch (type) {
     case CREATE_USER :
-    case CLEAR_TODO :
       return {
         ...state,
-        username,
-        userToDos: []
-      }
-    case STORE_TODO :
-      return {
-        ...state,
-        username,
-        userToDos
+        [username]: {
+          username,
+          userToDos: []
+        }
       }
     case CREATE_TODO :
       return {
         ...state,
-        userToDos: [
-          ...state.userToDos,
-          { task, color, deadline, todoId, complete }
-        ]
+        [username]: {
+          ...state[username],
+          userToDos: [
+            ...state[username].userToDos,
+            { task, color, deadline, todoId, complete }
+          ]
+        }
       }
     case COMPLETE_TODO :
       return {
         ...state,
-        userToDos: state.userToDos.map(todo => {
-          return todo.todoId === todoId
-            ? {
-              ...todo,
-              complete: true
-            }
-            : todo
-        })
+        [username]: {
+          ...state[username],
+          userToDos: state[username].userToDos.map(todo => {
+            return todo.todoId === todoId
+              ? {
+                ...todo,
+                complete: true
+              }
+              : todo
+          })
+        }
       }
     case REMOVE_TODO :
       return {
         ...state,
-        userToDos: state.userToDos.filter(todo => todo.todoId !== todoId)
+        [username]: {
+          ...state[username],
+          userToDos: state[username].userToDos.filter(todo => todo.todoId !== todoId)
+        }
       }
+    case CLEAR_TODO :
+      return {
+        ...state,
+        [username]: {
+          ...state[username],
+          userToDos: []
+        }
+      }
+    case CLEAR_ALL:
+      return {}
     default :
       return state
   }
