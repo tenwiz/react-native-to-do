@@ -3,6 +3,7 @@ import {View} from "react-native";
 import {connect} from 'react-redux'
 import {FeedMain} from "../../components/Feed/FeedMain";
 import {TabHeader} from "../../components/common/TabHeader";
+import {sortDate} from "../../util/time";
 
 const mapStateToProps = (state) => {
   return {
@@ -23,7 +24,7 @@ class FeedContainerBase extends Component {
     return (
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <TabHeader headerText={'Todo'}/>
-        <FeedMain userToDos={this.props.userToDos}/>
+        <FeedMain userToDos={sortDate(this.props.userToDos)}/>
       </View>
     )
   }

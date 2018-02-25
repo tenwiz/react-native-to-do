@@ -14,7 +14,7 @@ import {convertDateToWord} from "../../util/time";
 export class FeedMain extends Component {
   alertPresent = false
 
-  handleSwipe = (direction) => {
+  handleSwipe = direction => {
     if (!this.alertPresent && direction === 'left') {
       setTimeout(() => {
         Alert.alert(
