@@ -40,12 +40,11 @@ export const completeTodo = (todoId) => dispatch => (
   })
 )
 
-const removeTodo = (username, todoId) => (
-  {
+export const removeTodo = (todoId) => dispatch => (
+  dispatch({
     type: REMOVE_TODO,
-    username,
     todoId
-  }
+  })
 )
 
 const clearTodo = username => (
@@ -178,7 +177,7 @@ const toDos = (state = dummyData, action) => {
     case REMOVE_TODO :
       return {
         ...state,
-        userToDos: userToDos.filter(todo => todo.todoId !== todoId)
+        userToDos: state.userToDos.filter(todo => todo.todoId !== todoId)
       }
     default :
       return state
