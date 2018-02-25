@@ -6,6 +6,7 @@ import {toDoColor} from "../../resource/image/image";
 import {cropText} from "../../util/text";
 import Swipeout from 'react-native-swipeout'
 import {commonFontFamily} from "../../resource/font";
+import {convertDateToWord} from "../../util/time";
 
 /**
  * Design: ReplaceMe!
@@ -47,8 +48,16 @@ export class FeedMain extends Component {
       <View style={styles.item}>
         <Image source={toDoColor[item.color]} style={styles.image}/>
         <View style={{justifyContent: 'space-between'}}>
-          <Text style={ item.complete ? styles.taskDone : styles.task }>{cropText(item.task)}</Text>
-          <Text style={ item.complete ? styles.deadlineDone : styles.deadline }>{`Due ${item.deadline}`}</Text>
+          <Text
+            style={ item.complete ? styles.taskDone : styles.task }
+          >
+            {cropText(item.task)}
+          </Text>
+          <Text
+            style={ item.complete ? styles.deadlineDone : styles.deadline }
+          >
+            {`Due ${convertDateToWord(item.deadline.split(' ')[0])}`}
+          </Text>
         </View>
       </View>
     </Swipeout>
