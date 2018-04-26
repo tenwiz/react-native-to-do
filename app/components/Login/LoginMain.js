@@ -6,6 +6,7 @@ import {InputField} from "../common/InputField";
 import { reduxForm, Field } from 'redux-form'
 import {commonFontFamily} from "../../resource/font";
 import {commonPadding, paddingValue} from "../../resource/constant";
+import {TEXT_LOGIN, TEXT_USERNAME_PLACEHOLDER} from "../../resource/text";
 
 const LogoWithText = () => (
   <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
@@ -27,10 +28,10 @@ class LoginMain extends Component {
         <Field
           name={'username'}
           component={InputField}
-          placeholder={'Name'}
+          placeholder={TEXT_USERNAME_PLACEHOLDER}
         />
         <View style={commonPadding}/>
-        <CustomButton btnText={'Login'} onPress={this.props.handleSubmit}/>
+        <CustomButton btnText={TEXT_LOGIN} onPress={this.props.handleSubmit}/>
       </View>
     )
   }

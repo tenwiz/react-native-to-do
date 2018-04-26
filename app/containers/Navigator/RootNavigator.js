@@ -6,6 +6,7 @@ import {FeedContainer} from "../MyTab/FeedContainer";
 import {AddTodoContainer} from "../MyTab/AddTodoContainer";
 import {ProfileContainer} from "../MyTab/ProfileContainer";
 import {addIn, addOut, feedIn, feedOut, profileIn, profileOut} from "../../resource/image/image";
+import {TEXT_ADD, TEXT_FEED, TEXT_PROFILE} from "../../resource/text";
 
 const commonNavigationOptions = {
   header: null
@@ -38,10 +39,11 @@ const ProfileStack = StackNavigator({
   },
 })
 
-const TabBarItem = (focused, iconOut, iconIn) => (
+const TabBarItem = (focused, iconOut, iconIn, testID) => (
   <Image
     source={focused ? iconIn : iconOut}
     style={{ width: 20, height: 20 }}
+    testID={testID}
   />
 )
 
@@ -51,7 +53,7 @@ const MyTabRouteConfigs = {
     navigationOptions: {
       ...commonNavigationOptions,
       tabBarIcon: ({ focused }) => (
-        TabBarItem( focused, feedOut, feedIn)
+        TabBarItem(focused, feedOut, feedIn, TEXT_FEED)
       ),
     },
   },
@@ -60,7 +62,7 @@ const MyTabRouteConfigs = {
     navigationOptions: {
       ...commonNavigationOptions,
       tabBarIcon: ({ focused }) => (
-        TabBarItem( focused, addOut, addIn)
+        TabBarItem(focused, addOut, addIn, TEXT_ADD)
       ),
     },
   },
@@ -69,7 +71,7 @@ const MyTabRouteConfigs = {
     navigationOptions: {
       ...commonNavigationOptions,
       tabBarIcon: ({ focused }) => (
-        TabBarItem( focused, profileOut, profileIn)
+        TabBarItem(focused, profileOut, profileIn, TEXT_PROFILE)
       ),
     },
   },

@@ -4,7 +4,7 @@ import {INPUT_BORDER, PLACEHOLDER_COLOR} from "../../resource/color";
 import {commonFontFamily} from "../../resource/font";
 import {paddingValue} from "../../resource/constant";
 
-// Declare before defaultProps
+// declare before defaultProps
 export const commonInputDefault = {
   borderColor: INPUT_BORDER,
   height: 48

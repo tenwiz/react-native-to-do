@@ -17,7 +17,7 @@ export class FeedMain extends Component {
   handleSwipe = (direction, todoId) => {
     const { completeTodo, removeTodo, username } = this.props
 
-    if (!this.alertPresent && direction === 'right') { // Slide left
+    if (!this.alertPresent && direction === 'right') { // slide left
       setTimeout(() => {
         Alert.alert(
           'Are you sure you want to delete this TODO?',
@@ -33,7 +33,7 @@ export class FeedMain extends Component {
         )
       }, 100)
       this.alertPresent = true
-    } else if (direction === 'left') { // Slide right
+    } else if (direction === 'left') { // slide right
       completeTodo(username, todoId)
     }
   }

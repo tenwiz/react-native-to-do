@@ -3,14 +3,13 @@ import {connect} from 'react-redux'
 import LoginMain from "../../components/Login/LoginMain";
 import {bindActionCreators} from 'redux'
 import * as toDosActions from "../../redux/modules/toDos";
-import configureStore from '../../configureStore'
 import {resetStack} from "../../util/navigation";
 
 const mapStateToProps = ({ currentUser }) => ({
   username: currentUser.username || ''
 })
 
-const mapDispatchToProps = (dispatch) => ( // short-hand dispatch syntax ftw
+const mapDispatchToProps = (dispatch) => (
   bindActionCreators(toDosActions, dispatch)
 )
 

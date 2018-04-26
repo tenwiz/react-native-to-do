@@ -8,6 +8,7 @@ import {commonPadding, paddingValue} from "../../resource/constant";
 import {todoColor} from "../../resource/image/image";
 import {ColorOption} from "./ColorOption";
 import {CustomDatePicker} from "./CustomDatePicker";
+import {TEXT_BUTTON_ADD, TEXT_TASK_PLACEHOLDER} from "../../resource/text";
 
 /**
  * Design: ReplaceMe!
@@ -19,7 +20,7 @@ class AddTodoMain extends Component {
         <Field
           name={'task'}
           component={InputField}
-          placeholder={'When do you need to do?'}
+          placeholder={TEXT_TASK_PLACEHOLDER}
           borderColor={MUTILINE_INPUT_BORDER}
           height={100}
           multiline
@@ -41,7 +42,7 @@ class AddTodoMain extends Component {
             ))
           }
         </View>
-        <CustomButton btnText={'Add'} onPress={this.props.handleSubmit}/>
+        <CustomButton btnText={TEXT_BUTTON_ADD} onPress={this.props.handleSubmit}/>
       </View>
     )
   }

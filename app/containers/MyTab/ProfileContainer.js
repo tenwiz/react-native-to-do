@@ -10,7 +10,7 @@ const mapStateToProps = ({ currentUser }) => ({
   username: currentUser.username
 })
 
-const mapDispatchToProps = dispatch => ( // short-hand dispatch syntax ftw
+const mapDispatchToProps = dispatch => (
   bindActionCreators(toDosActions, dispatch)
 )
 

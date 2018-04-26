@@ -8,7 +8,7 @@ const mapStateToProps = (state) => (
   {}
 )
 
-const mapDispatchToProps = dispatch => ( // short-hand dispatch syntax ftw
+const mapDispatchToProps = dispatch => (
   // bindActionCreators(someActions, dispatch)
   {}
 )

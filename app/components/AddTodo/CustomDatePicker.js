@@ -4,6 +4,7 @@ import {PLACEHOLDER_COLOR} from "../../resource/color";
 import {deviceWidth} from "../../util/dimension";
 import DatePicker from "react-native-datepicker";
 import {commonInput, commonInputDefault, commonInputFont} from "../common/InputField";
+import {TEXT_CONFIRM, TEXT_DEADLINE_PLACEHOLDER} from "../../resource/text";
 
 /**
  * Design: ReplaceMe!
@@ -15,9 +16,9 @@ export class CustomDatePicker extends Component {
     return (
       <DatePicker
         style={{width: deviceWidth - commonPadding * 2, paddingVertical: 4}}
-        placeholder={'When is it due?'}
+        placeholder={TEXT_DEADLINE_PLACEHOLDER}
         mode={'datetime'}
-        confirmBtnText={"Confirm"}
+        confirmBtnText={TEXT_CONFIRM}
         cancelBtnText={"Cancel"}
         showIcon={false}
         onDateChange={input.onChange}
