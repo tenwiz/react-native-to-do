@@ -1,5 +1,3 @@
-// test
-
 export const TEXT_USERNAME_PLACEHOLDER = 'Name'
 export const TEXT_LOGIN = 'Login'
 export const TEXT_TASK_PLACEHOLDER = 'What do you need to do?'
