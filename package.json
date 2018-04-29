@@ -40,6 +40,12 @@
         "build": "xcodebuild -project ios/Todo.xcodeproj -scheme Todo -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
         "type": "ios.simulator",
         "name": "iPhone 7"
+      },
+      "ios.sim.release": {
+        "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/Todo.app",
+        "build": "xcodebuild -project ios/Todo.xcodeproj -scheme Todo -configuration Release -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone 7"
       }
     }
   }
