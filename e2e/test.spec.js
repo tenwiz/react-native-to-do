@@ -51,7 +51,7 @@ describe('Create Todo', () => {
     await element(by.id(TEXT_COLOR)).atIndex(0).tap();
   })
 
-  it('create', async () => {
+  it('add', async () => {
     await element(by.text(TEXT_BUTTON_ADD)).tap();
   })
 })
