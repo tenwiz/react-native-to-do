@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "detox": "^7.3.4",
-    "mocha": "^5.1.1",
     "react": "16.2.0",
     "react-native": "0.53.3",
     "react-native-datepicker": "^1.6.0",
