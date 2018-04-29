@@ -8,3 +8,4 @@ export const TEXT_FEED = "feed"
 export const TEXT_PROFILE = "profile"
 export const TEXT_COLOR = "color"
 export const TEXT_BUTTON_ADD = "add"
+
