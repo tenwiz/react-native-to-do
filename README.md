@@ -1,7 +1,5 @@
 # React Native
 
-[Demos](https://github.com/Martian2Lee/Portfolio)
-
 ## Assessment
 
 Build a React Native Todo app.
