@@ -1,8 +1,8 @@
-import React, {Component} from 'react'
-import {View, Text, StyleSheet} from 'react-native'
-import {HEADER_COLOR, HEADER_TEXT_COLOR} from "../../resource/color";
-import {commonFontFamily} from "../../resource/font";
-import {paddingValue} from "../../resource/constant";
+import React, { Component } from 'react'
+import { View, Text, StyleSheet } from 'react-native'
+import { HEADER_COLOR, HEADER_TEXT_COLOR } from '../../resource/color'
+import { commonFontFamily } from '../../resource/font'
+import { paddingValue } from '../../resource/constant'
 
 /**
  * Design: ReplaceMe!
@@ -13,9 +13,7 @@ export class TabHeader extends Component {
 
     return (
       <View style={styles.header}>
-        <Text style={styles.headerText}>
-          {headerText}
-        </Text>
+        <Text style={styles.headerText}>{headerText}</Text>
       </View>
     )
   }

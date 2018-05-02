@@ -1,8 +1,8 @@
-import React, {Component} from 'react'
-import {TextInput, StyleSheet} from "react-native";
-import {INPUT_BORDER, PLACEHOLDER_COLOR} from "../../resource/color";
-import {commonFontFamily} from "../../resource/font";
-import {paddingValue} from "../../resource/constant";
+import React, { Component } from 'react'
+import { TextInput, StyleSheet } from 'react-native'
+import { INPUT_BORDER, PLACEHOLDER_COLOR } from '../../resource/color'
+import { commonFontFamily } from '../../resource/font'
+import { paddingValue } from '../../resource/constant'
 
 // declare before defaultProps
 export const commonInputDefault = {
@@ -39,7 +39,7 @@ export const commonInput = {
   borderWidth: 1,
   paddingHorizontal: 12,
   paddingTop: paddingValue,
-  paddingBottom: 15,
+  paddingBottom: 15
 }
 
 export const commonInputFont = {

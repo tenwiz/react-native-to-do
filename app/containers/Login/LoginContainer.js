@@ -1,17 +1,16 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import LoginMain from "../../components/Login/LoginMain";
-import {bindActionCreators} from 'redux'
-import * as toDosActions from "../../redux/modules/toDos";
-import {resetStack} from "../../util/navigation";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import LoginMain from '../../components/Login/LoginMain'
+import { bindActionCreators } from 'redux'
+import * as toDosActions from '../../redux/modules/toDos'
+import { resetStack } from '../../util/navigation'
 
 const mapStateToProps = ({ currentUser }) => ({
   username: currentUser.username || ''
 })
 
-const mapDispatchToProps = (dispatch) => (
+const mapDispatchToProps = dispatch =>
   bindActionCreators(toDosActions, dispatch)
-)
 
 /**
  * Design: ReplaceMe!
@@ -30,9 +29,13 @@ class LoginContainerBase extends Component {
     const { userLogin, navigation } = this.props
 
     return (
-      <LoginMain onSubmit={({ username }) => username && userLogin(username, navigation)}/>
+      <LoginMain
+        onSubmit={({ username }) => username && userLogin(username, navigation)}
+      />
     )
   }
 }
 
-export const LoginContainer = connect(mapStateToProps, mapDispatchToProps)(LoginContainerBase)
+export const LoginContainer = connect(mapStateToProps, mapDispatchToProps)(
+  LoginContainerBase
+)

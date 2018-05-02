@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
-import { reducer as form } from 'redux-form';
+import { reducer as form } from 'redux-form'
 import toDos from './modules/toDos'
-import currentUser from "./modules/currentUser";
+import currentUser from './modules/currentUser'
 
 const rootReducer = combineReducers({
   toDos,

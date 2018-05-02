@@ -1,12 +1,19 @@
 import React from 'react'
-import {Image} from "react-native";
+import { Image } from 'react-native'
 import { StackNavigator, TabNavigator } from 'react-navigation'
-import {LoginContainer} from "../Login/LoginContainer"
-import {FeedContainer} from "../MyTab/FeedContainer";
-import {AddTodoContainer} from "../MyTab/AddTodoContainer";
-import {ProfileContainer} from "../MyTab/ProfileContainer";
-import {addIn, addOut, feedIn, feedOut, profileIn, profileOut} from "../../resource/image/image";
-import {TEXT_ADD, TEXT_FEED, TEXT_PROFILE} from "../../resource/text";
+import { LoginContainer } from '../Login/LoginContainer'
+import { FeedContainer } from '../MyTab/FeedContainer'
+import { AddTodoContainer } from '../MyTab/AddTodoContainer'
+import { ProfileContainer } from '../MyTab/ProfileContainer'
+import {
+  addIn,
+  addOut,
+  feedIn,
+  feedOut,
+  profileIn,
+  profileOut
+} from '../../resource/image/image'
+import { TEXT_ADD, TEXT_FEED, TEXT_PROFILE } from '../../resource/text'
 
 const commonNavigationOptions = {
   header: null
@@ -16,27 +23,27 @@ const FeedStack = StackNavigator({
   Feed: {
     screen: FeedContainer,
     navigationOptions: {
-      ...commonNavigationOptions,
-    },
-  },
+      ...commonNavigationOptions
+    }
+  }
 })
 
 const AddTodoStack = StackNavigator({
   AddTodo: {
     screen: AddTodoContainer,
     navigationOptions: {
-      ...commonNavigationOptions,
-    },
-  },
+      ...commonNavigationOptions
+    }
+  }
 })
 
 const ProfileStack = StackNavigator({
   Profile: {
     screen: ProfileContainer,
     navigationOptions: {
-      ...commonNavigationOptions,
-    },
-  },
+      ...commonNavigationOptions
+    }
+  }
 })
 
 const TabBarItem = (focused, iconOut, iconIn, testID) => (
@@ -52,29 +59,25 @@ const MyTabRouteConfigs = {
     screen: FeedStack,
     navigationOptions: {
       ...commonNavigationOptions,
-      tabBarIcon: ({ focused }) => (
+      tabBarIcon: ({ focused }) =>
         TabBarItem(focused, feedOut, feedIn, TEXT_FEED)
-      ),
-    },
+    }
   },
   AddTodoStack: {
     screen: AddTodoStack,
     navigationOptions: {
       ...commonNavigationOptions,
-      tabBarIcon: ({ focused }) => (
-        TabBarItem(focused, addOut, addIn, TEXT_ADD)
-      ),
-    },
+      tabBarIcon: ({ focused }) => TabBarItem(focused, addOut, addIn, TEXT_ADD)
+    }
   },
   ProfileStack: {
     screen: ProfileStack,
     navigationOptions: {
       ...commonNavigationOptions,
-      tabBarIcon: ({ focused }) => (
+      tabBarIcon: ({ focused }) =>
         TabBarItem(focused, profileOut, profileIn, TEXT_PROFILE)
-      ),
-    },
-  },
+    }
+  }
 }
 
 const TabNavigatorConfig = {
@@ -83,7 +86,7 @@ const TabNavigatorConfig = {
     style: {
       paddingHorizontal: 85,
       backgroundColor: 'white'
-    },
+    }
   }
 }
 
@@ -93,11 +96,11 @@ const RootNavigator = StackNavigator({
   Login: {
     screen: LoginContainer,
     navigationOptions: {
-      ...commonNavigationOptions,
-    },
+      ...commonNavigationOptions
+    }
   },
   MyTab: {
-    screen: MyTab,
+    screen: MyTab
   }
 })
 

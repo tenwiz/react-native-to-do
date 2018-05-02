@@ -1,11 +1,11 @@
-import React, {Component} from 'react'
-import {View} from "react-native";
-import {connect} from 'react-redux'
-import {FeedMain} from "../../components/Feed/FeedMain";
-import {TabHeader} from "../../components/common/TabHeader";
-import {sortDate} from "../../util/time";
-import * as toDosActions from "../../redux/modules/toDos";
-import {bindActionCreators} from "redux";
+import React, { Component } from 'react'
+import { View } from 'react-native'
+import { connect } from 'react-redux'
+import { FeedMain } from '../../components/Feed/FeedMain'
+import { TabHeader } from '../../components/common/TabHeader'
+import { sortDate } from '../../util/time'
+import * as toDosActions from '../../redux/modules/toDos'
+import { bindActionCreators } from 'redux'
 
 const mapStateToProps = ({ toDos, currentUser }) => {
   const username = currentUser.username
@@ -16,9 +16,8 @@ const mapStateToProps = ({ toDos, currentUser }) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => (
+const mapDispatchToProps = dispatch =>
   bindActionCreators(toDosActions, dispatch)
-)
 
 /**
  * Design: ReplaceMe!
@@ -28,8 +27,8 @@ class FeedContainerBase extends Component {
     const { userToDos, username, completeTodo, removeTodo } = this.props
 
     return (
-      <View style={{flex: 1, backgroundColor: 'white'}}>
-        <TabHeader headerText={'Todo'}/>
+      <View style={{ flex: 1, backgroundColor: 'white' }}>
+        <TabHeader headerText={'Todo'} />
         <FeedMain
           userToDos={sortDate(userToDos)}
           completeTodo={completeTodo}
@@ -41,4 +40,6 @@ class FeedContainerBase extends Component {
   }
 }
 
-export const FeedContainer = connect(mapStateToProps, mapDispatchToProps)(FeedContainerBase)
+export const FeedContainer = connect(mapStateToProps, mapDispatchToProps)(
+  FeedContainerBase
+)

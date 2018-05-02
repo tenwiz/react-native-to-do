@@ -1,6 +1,6 @@
 import uuidv4 from 'uuid/v4'
-import {resetStack} from "../../util/navigation";
-import {updateCurrentUser} from "./currentUser";
+import { resetStack } from '../../util/navigation'
+import { updateCurrentUser } from './currentUser'
 
 const CREATE_USER = 'CREATE_USER'
 const CREATE_TODO = 'CREATE_TODO'
@@ -14,7 +14,7 @@ const createUser = username => ({
   username
 })
 
-const createTodo = ({ username, task, color, deadline }) =>  ({
+const createTodo = ({ username, task, color, deadline }) => ({
   type: CREATE_TODO,
   username,
   task,
@@ -53,7 +53,10 @@ export const userLogin = (username, navigation) => (dispatch, getState) => {
   resetStack('MyTab', navigation)
 }
 
-export const createTodoAndToFeed = (todo, navigation) => (dispatch, getState) => {
+export const createTodoAndToFeed = (todo, navigation) => (
+  dispatch,
+  getState
+) => {
   const username = getState().currentUser.username
   dispatch(createTodo({ ...todo, username }))
   resetStack('MyTab', navigation)
@@ -74,7 +77,7 @@ const toDos = (state = {}, action) => {
   const { type, username, task, color, deadline, todoId, complete } = action
 
   switch (type) {
-    case CREATE_USER :
+    case CREATE_USER:
       return {
         ...state,
         [username]: {
@@ -82,7 +85,7 @@ const toDos = (state = {}, action) => {
           userToDos: []
         }
       }
-    case CREATE_TODO :
+    case CREATE_TODO:
       return {
         ...state,
         [username]: {
@@ -93,7 +96,7 @@ const toDos = (state = {}, action) => {
           ]
         }
       }
-    case COMPLETE_TODO :
+    case COMPLETE_TODO:
       return {
         ...state,
         [username]: {
@@ -101,22 +104,24 @@ const toDos = (state = {}, action) => {
           userToDos: state[username].userToDos.map(todo => {
             return todo.todoId === todoId
               ? {
-                ...todo,
-                complete: true
-              }
+                  ...todo,
+                  complete: true
+                }
               : todo
           })
         }
       }
-    case REMOVE_TODO :
+    case REMOVE_TODO:
       return {
         ...state,
         [username]: {
           ...state[username],
-          userToDos: state[username].userToDos.filter(todo => todo.todoId !== todoId)
+          userToDos: state[username].userToDos.filter(
+            todo => todo.todoId !== todoId
+          )
         }
       }
-    case CLEAR_TODO :
+    case CLEAR_TODO:
       return {
         ...state,
         [username]: {
@@ -126,7 +131,7 @@ const toDos = (state = {}, action) => {
       }
     case CLEAR_ALL_USER:
       return {}
-    default :
+    default:
       return state
   }
 }
