@@ -1,10 +1,14 @@
-import React, {Component} from 'react'
-import {commonPadding} from "../../resource/constant";
-import {PLACEHOLDER_COLOR} from "../../resource/color";
-import {deviceWidth} from "../../util/dimension";
-import DatePicker from "react-native-datepicker";
-import {commonInput, commonInputDefault, commonInputFont} from "../common/InputField";
-import {TEXT_CONFIRM, TEXT_DEADLINE_PLACEHOLDER} from "../../resource/text";
+import React, { Component } from 'react'
+import { commonPadding } from '../../resource/constant'
+import { PLACEHOLDER_COLOR } from '../../resource/color'
+import { deviceWidth } from '../../util/dimension'
+import DatePicker from 'react-native-datepicker'
+import {
+  commonInput,
+  commonInputDefault,
+  commonInputFont
+} from '../common/InputField'
+import { TEXT_CONFIRM, TEXT_DEADLINE_PLACEHOLDER } from '../../resource/text'
 
 /**
  * Design: ReplaceMe!
@@ -15,11 +19,11 @@ export class CustomDatePicker extends Component {
 
     return (
       <DatePicker
-        style={{width: deviceWidth - commonPadding * 2, paddingVertical: 4}}
+        style={{ width: deviceWidth - commonPadding * 2, paddingVertical: 4 }}
         placeholder={TEXT_DEADLINE_PLACEHOLDER}
         mode={'datetime'}
         confirmBtnText={TEXT_CONFIRM}
-        cancelBtnText={"Cancel"}
+        cancelBtnText={'Cancel'}
         showIcon={false}
         onDateChange={input.onChange}
         date={input.value}
@@ -31,7 +35,7 @@ export class CustomDatePicker extends Component {
           },
           placeholderText: {
             ...commonInputFont,
-            color: PLACEHOLDER_COLOR,
+            color: PLACEHOLDER_COLOR
           },
           dateText: {
             ...commonInputFont
