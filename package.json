@@ -6,7 +6,8 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
     "test:e2e": "detox test -c ios.sim.debug",
-    "test:e2e:build": "detox build"
+    "test:e2e:build": "detox build",
+    "precommit": "lint-staged"
   },
   "dependencies": {
     "detox": "^7.3.4",
@@ -25,8 +26,17 @@
   "devDependencies": {
     "babel-jest": "22.4.0",
     "babel-preset-react-native": "4.0.0",
+    "husky": "^0.14.3",
     "jest": "22.4.0",
+    "lint-staged": "^7.0.5",
+    "prettier": "^1.12.1",
     "react-test-renderer": "16.2.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --single-quote --no-semi --trailing-comma none --write",
+      "git add"
+    ]
   },
   "jest": {
     "preset": "react-native"
