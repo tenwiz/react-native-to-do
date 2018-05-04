@@ -7,7 +7,8 @@
     "test": "jest",
     "test:e2e": "detox test -c ios.sim.debug",
     "test:e2e:build": "detox build",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "sim": "open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
   },
   "dependencies": {
     "detox": "^7.3.4",
