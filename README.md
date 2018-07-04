@@ -1,10 +1,10 @@
-# React Native
+# React Native To Do App
 
 ## Assessment
 
 Build a React Native Todo app.
 
-See the Sketch file for designs.
+![](https://github.com/Martian2Lee/React-Native-Todo/blob/master/gif/1.gif)
 
 ### Notes
 
