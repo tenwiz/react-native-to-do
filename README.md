@@ -4,7 +4,7 @@
 
 Build a React Native Todo app.
 
-![](https://github.com/Martian2Lee/React-Native-Todo/blob/master/gif/1.gif)
+![](https://github.com/tenwiz/react-native-to-do/blob/master/1.gif)
 
 ### Notes
 
